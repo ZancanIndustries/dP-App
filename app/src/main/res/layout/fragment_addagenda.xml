@@ -23,4 +23,17 @@
 
     </RadioGroup>
 
+    <EditText
+        android:id="@+id/editTextInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/radioGroup"
+        android:hint="Scrivi qualcosa..."
+        android:minLines="2"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:inputType="textMultiLine"
+        android:background="@drawable/shadowlight"/>
+
 </RelativeLayout>

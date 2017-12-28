@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -84,7 +85,7 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.CustomView
                 Log.d("data", stringData + " " + giorni.getData());
                 if (stringData.equals(giorni.getData())) {
                     customViewHolder.textViewNessunEvento.setVisibility(View.GONE);
-                    arrayListEvento.add(new Evento(jObj.getString("canale"), stringOra));
+                    arrayListEvento.add(new Evento(jObj.getString("canale"), stringOra, jObj.getString("info")));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -97,6 +98,13 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.CustomView
         customViewHolder.recyclerViewAgenda.setLayoutManager(layoutManager);
         eventiAdapter = new EventiAdapter(mContext, arrayListEvento);
         customViewHolder.recyclerViewAgenda.setAdapter(eventiAdapter);
+
+        customViewHolder.layoutInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override
@@ -108,11 +116,13 @@ public class AgendaAdapter extends RecyclerView.Adapter<AgendaAdapter.CustomView
         TextView textViewGiorno, textViewData, textViewNessunEvento;
         ImageView imageViewAdd;
         RecyclerView recyclerViewAgenda;
+        RelativeLayout layoutInfo;
 
         public CustomViewHolder(View view) {
             super(view);
             this.textViewGiorno = (TextView) view.findViewById(R.id.textViewNomeGiorno);
             this.textViewData = (TextView) view.findViewById(R.id.textViewData);
+            this.layoutInfo = (RelativeLayout) view.findViewById(R.id.layoutInfo);
             this.imageViewAdd = (ImageView) view.findViewById(R.id.imageAdd);
             this.recyclerViewAgenda = (RecyclerView) view.findViewById(R.id.recyclerViewAgenda);
             this.textViewNessunEvento = (TextView) view.findViewById(R.id.textViewNessunEvento);

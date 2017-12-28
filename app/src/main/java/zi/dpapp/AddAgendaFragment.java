@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -23,10 +24,11 @@ public class AddAgendaFragment extends DialogFragment {
     RadioGroup radioGroup;
     Button radioButton;
     RadioButton radioStreamer;
-    String canale;
+    EditText editTextInfo;
+    String canale, info;
 
     public interface addAgenda {
-        public void addAgendaEvents(String canale);
+        public void addAgendaEvents(String canale, String info);
     }
 
     static AddAgendaFragment newInstance(int num) {
@@ -43,6 +45,7 @@ public class AddAgendaFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_addagenda, null);
+        editTextInfo = (EditText) view.findViewById(R.id.editTextInfo);
         radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
         radioStreamer = (RadioButton) view.findViewById(R.id.radioStreamer);
         radioStreamer.setText(getArguments().getString("twitch"));
@@ -66,8 +69,9 @@ public class AddAgendaFragment extends DialogFragment {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        info = editTextInfo.getText().toString();
                         if(getActivity() instanceof MainActivity){
-                            ((MainActivity)getActivity()).addAgendaEvents(canale);
+                            ((MainActivity)getActivity()).addAgendaEvents(canale, info);
                         }
                         dismiss();
                     }

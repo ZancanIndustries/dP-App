@@ -7,10 +7,12 @@ package zi.dpapp.models;
 public class Evento {
     private String canale;
     private String ora;
+    private String info;
 
-    public Evento(String canale, String ora) {
+    public Evento(String canale, String ora, String info) {
         this.canale = canale;
         this.ora = ora;
+        this.info = info;
     }
 
     public String getCanale() {
@@ -27,5 +29,13 @@ public class Evento {
 
     public void setOra(String ora) {
         this.ora = ora;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 }

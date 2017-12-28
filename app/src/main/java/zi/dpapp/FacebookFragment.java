@@ -38,7 +38,7 @@ public class FacebookFragment extends Fragment {
         progressBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
         WebSettings webSetting = htmlWebView.getSettings();
         webSetting.setJavaScriptEnabled(true);
-        htmlWebView.loadData("<iframe src=\"https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fdragonspowergaming%2F&tabs=timeline&small_header=true&adapt_container_width=false&hide_cover=false&show_facepile=true&appId=1191569614311190\" width=\"340\" height=\"500\" style=\"border:none;overflow:hidden\" scrolling=\"no\" frameborder=\"0\" allowTransparency=\"true\"></iframe>", "text/html", "utf-8");
+        htmlWebView.loadUrl("https://m.facebook.com/dragonspowergaming/");
         htmlWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

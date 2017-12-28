@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }, 7000);
 
         setSupportActionBar(toolbar);
+        setTitle("Home");
 
         progressBarStreaming.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -228,16 +229,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (user != null) {
 
             DatabaseReference myRef = mDatabase.child("users/" + user.getUid());
-
             myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
                     User utente = dataSnapshot.getValue(User.class);
+                    Log.d("nome", utente.getNome());
                     loggedUser = utente.getNome();
                     loggedRole = utente.getRole();
                     loggedTwitch = utente.getTwitchNick();
+                    View navHeaderView = navigationViewDrawer.getHeaderView(0);
+                    TextView textViewName = (TextView) navHeaderView.findViewById(R.id.textViewNome);
+                    textViewName.setText(utente.getNome());
                 }
 
                 @Override
@@ -246,10 +250,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Log.w("Firebase", "Failed to read value.", error.toException());
                 }
             });
-
-            View navHeaderView = navigationViewDrawer.getHeaderView(0);
-            TextView textViewName = (TextView) navHeaderView.findViewById(R.id.textViewNome);
-            textViewName.setText(loggedUser);
 
             layoutSplash.setVisibility(View.GONE);
             layoutHome.setVisibility(View.VISIBLE);
@@ -449,6 +449,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 try {
                                     jsonObjectEvento.put("canale", doc.getString("canale"));
                                     jsonObjectEvento.put("data", format.format(doc.getDate("data")));
+                                    jsonObjectEvento.put("info", doc.getString("info"));
                                 } catch (JSONException e1) {
                                     e1.printStackTrace();
                                 }
@@ -515,7 +516,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void addAgendaEvents(String canale) {
+    public void addAgendaEvents(String canale, String info) {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String stringData = agendaData + " " + agendaOra;
         Log.d("string", stringData);
@@ -529,6 +530,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Map<String, Object> data = new HashMap<>();
         data.put("canale", canale);
         data.put("data", dataEvento);
+        data.put("info", info);
 
         firebaseFirestore.collection("calendario")
                 .add(data)
