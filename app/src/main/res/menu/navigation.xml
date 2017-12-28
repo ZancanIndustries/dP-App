@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_cerca"
+        android:icon="@drawable/ic_search"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_streaming"
+        android:icon="@drawable/ic_twitch"
+        android:title="@string/title_stream" />
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_match"
+        android:icon="@drawable/ic_swords"
+        android:title="@string/title_team" />
+
+    <item
+        android:id="@+id/navigation_calendario"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/title_calendario" />
+
+</menu>

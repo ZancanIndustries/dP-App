@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="zi.dpapp.MainActivity"
+    tools:showIn="@layout/app_bar_main"
+    android:background="#4e4e4e">
+
+    <RelativeLayout
+        android:id="@+id/layoutSplash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLight">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="150dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/shadowdark"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/dp_logo" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView"
+                android:layout_centerHorizontal="true"
+                android:text="#WeAredP"
+                android:textColor="#FFFFFF" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+
+                <zi.dpapp.LoadingSpinner
+                    android:id="@+id/loadingSpinner"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:id="@+id/textViewRandom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toEndOf="@+id/loadingSpinner"
+                    android:text=""
+                    android:textColor="#FFFFFF" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutStreaming"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/navigation"
+        android:visibility="invisible">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:elevation="5dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewStreaming"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutTeam"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/navigation"
+        android:visibility="invisible">
+
+        <ProgressBar
+            android:id="@+id/progressBarTeam"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:elevation="5dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewTeam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/shadow"
+        android:visibility="invisible">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabLayout" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layoutAgenda"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_above="@id/navigation">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewAgenda"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#c2c2c2"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/navigation"
+        android:visibility="gone"/>
+
+</RelativeLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="Chi Siamo" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Contatti" />
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Logout" />
+    </group>
+
+    <item android:title="Tesseramente GEC">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Informazioni" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Altro" />
+        </menu>
+    </item>
+
+</menu>
